@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, FlatList } from 'react-native';
 import { styles } from './styles';
-import { obtenerPaises } from './api/paises';
+import { obtenerPaises } from './paises.js';
 
 export default function App() {
   const [pantalla, setPantalla] = useState("todos");
