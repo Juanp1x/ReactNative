@@ -33,5 +33,43 @@ export const styles = StyleSheet.create({
     backgroundColor: '#fff',
     elevation: 2,
     borderBottomWidth: 0
+  },
+  
+  titulo: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 12
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 10,
+    padding: 10,
+    marginBottom: 10,
+    backgroundColor: '#fff'
+  },
+  conteo: {
+    color: '#666',
+    marginBottom: 8
+  },
+  card: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    padding: 10,
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    marginBottom: 8
+  },
+  bandera: {
+    fontSize: 32
+  },
+  nombre: {
+    fontSize: 16,
+    fontWeight: 'bold'
+  },
+  detalle: {
+    fontSize: 13,
+    color: '#555'
   }
 });

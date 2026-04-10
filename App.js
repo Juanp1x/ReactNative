@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, FlatList } from 'react-native';
 import { styles } from './styles';
-import { obtenerPaises } from './paises.js';
+import { obtenerPaises } from './api/paises';
+import BuscadorIdioma from './BuscadorIdioma';
 
 export default function App() {
   const [pantalla, setPantalla] = useState("todos");
   const [paises, setPaises] = useState([]);
 
-  
+
   useEffect(() => {
     const cargarDatos = async () => {
       const data = await obtenerPaises();
@@ -58,18 +59,24 @@ export default function App() {
             Oceanía
           </Text>
         </TouchableOpacity>
+        <TouchableOpacity onPress={() => setPantalla("idioma")}>
+          <Text style={[styles.navItem, pantalla === "idioma" && styles.activo]}>
+            Idioma
+          </Text>
+        </TouchableOpacity>
 
       </View>
 
       {/* LISTA */}
+      {pantalla !== "idioma" && (
       <FlatList
         style={{ flex: 1 }}
         data={
           pantalla === "todos" ? paises :
-          pantalla === "america" ? america :
-          pantalla === "europa" ? europa :
-          pantalla === "asia" ? asia :
-          pantalla === "oceania" ? oceania : []
+            pantalla === "america" ? america :
+              pantalla === "europa" ? europa :
+                pantalla === "asia" ? asia :
+                  pantalla === "oceania" ? oceania : []
         }
         keyExtractor={(item, index) => item.cca3 || index.toString()}
         renderItem={({ item }) => (
@@ -78,7 +85,8 @@ export default function App() {
           </Text>
         )}
       />
-
+      )}
+    {pantalla === "idioma" && <BuscadorIdioma paises={paises} />}
     </View>
   );
 }
